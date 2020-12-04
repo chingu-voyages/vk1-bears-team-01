@@ -1,0 +1,140 @@
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.reg__row {
+  margin-top: 50px;
+}
+
+.reg__right__column {
+  background: #fd6767;
+  border-radius: 40px;
+}
+
+.profile__pic {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.reg__h2 {
+  font-weight: bold;
+  color: #fd6767;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.reg__p {
+  font-size: 20px;
+  text-align: center;
+  color: #fd6767;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.reg__hr {
+  border: 5px solid #fef400;
+  max-width: 50px;
+  margin-top: 28px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reg__right__column__header__container {
+  padding-top: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.reg__right__column__h2 {
+  color: white;
+  font-weight: normal;
+  font-size: 34px;
+}
+
+.reg__right__column__p {
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.reg__field {
+  color: #fd6767;
+  border-radius: 40px;
+  height: 52px;
+  width: 300px;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reg__submit__button {
+  font-family: "Poppins", sans-serif;
+  color: #fd6767;
+  background-color: #fef400;
+  border-radius: 40px;
+  height: 44px;
+  width: 120px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0px 3px 3px #757574;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.reg__submit__button:hover {
+  background-color: #2400ff;
+}
+
+.reg__error__message {
+  padding-left: 30px;
+  color: #fef400;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .reg__row {
+    margin-top: 10px;
+  }
+
+  .reg__right__column {
+    border-radius: 0;
+  }
+
+  .reg__right__column__h2 {
+    text-align: center;
+  }
+
+  .reg__right__column__p {
+    text-align: center;
+  }
+
+  .reg__field {
+    width: 350px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+  .reg__row {
+    margin-top: 10px;
+  }
+  .reg__right__column {
+    border-radius: 0;
+  }
+  .reg__error__message {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and(max-width: 1024px) {
+  .reg__right__column {
+    border-radius: 0;
+    background: blue;
+  }
+}

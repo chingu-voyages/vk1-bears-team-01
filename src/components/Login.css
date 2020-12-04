@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+.login__row {
+  margin-top: 50px;
+}
+
+.right__column {
+  background: #fd6767;
+  border-radius: 40px;
+}
+
+.left__column {
+  background: white;
+}
+
+.login__h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  color: #fd6767;
+  margin-top: 72px;
+}
+
+.login__hr {
+  border: 5px solid #fef400;
+  max-width: 50px;
+  margin-top: 30px;
+  margin-left: 0px;
+}
+
+.login__p {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  font-size: 26px;
+  color: #fd6767;
+  margin-top: 28px;
+}
+
+.shopping__image {
+  height: 152px;
+  width: 201px;
+  margin-top: 28px;
+}
+
+.web__shopping__image {
+  height: 152px;
+  width: 201px;
+  margin-top: 28px;
+}
+
+.right__column__h2 {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 34px;
+  text-align: center;
+  margin-top: 72px;
+}
+
+.right__column__p {
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+}
+
+.center__block {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.email__field {
+  font-family: "Poppins", sans-serif;
+  color: #fd6767;
+  border-radius: 40px;
+  height: 52px;
+  width: 350px;
+  margin-left: 0 auto;
+}
+
+.email__field::placeholder {
+  color: #fd6767;
+}
+
+.email__inputgroup {
+  background-color: #ffff;
+  border-radius: 40px;
+  border: none;
+  color: #fd6767;
+}
+
+.password__field {
+  font-family: "Poppins", sans-serif;
+  color: #fd6767;
+  border-radius: 40px;
+  height: 52px;
+  width: 350px;
+  margin-left: 0 auto;
+}
+
+.password__field::placeholder {
+  color: #fd6767;
+}
+
+.remember__me {
+  color: white;
+}
+
+.forgot__password {
+  color: white;
+}
+
+.login__button {
+  color: #fd6767;
+  background-color: #fef400;
+  border-radius: 40px;
+  height: 44px;
+  width: 120px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0px 3px 3px #757574;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login__button:hover {
+  background-color: #2400ff;
+}
+
+.google__button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.create__account {
+  margin-top: 20px;
+  color: white;
+}
+
+.create__account__link {
+  color: #fef400;
+  margin-bottom: 50px;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .login__row {
+    margin-top: 10px;
+  }
+
+  .right__column {
+    border-radius: 0;
+  }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 991.98px) {
+  .create__account {
+    margin-bottom: 70px;
+  }
+}
