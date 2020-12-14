@@ -17,3 +17,18 @@
   color: #fd6767;
   font-size: 32px;
 }
+
+.nav__register__button {
+  background-color: #fef400;
+  border: none;
+  color: #fd6767;
+  margin-left: 10px;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 10px 15px;
+}
+
+.nav__register__button:hover {
+  background-color: #2400ff;
+  color: white;
+}

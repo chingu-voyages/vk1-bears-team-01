@@ -1,5 +1,5 @@
 import React from "react";
-import MainLayout from "./MainLayout";
+import MainLayout from "../layout/MainLayout";
 
 const NewItems = () => {
   return (

@@ -9,11 +9,11 @@ import {
   Container,
   DropdownButton,
 } from "react-bootstrap";
-import MainLayout from "./MainLayout";
+import MainLayout from "../layout/MainLayout";
 import "./Register.css";
 
 const Register = () => {
-  const { register, watch, errors } = useForm();
+  const { register, errors } = useForm();
   // const onSubmit = (data) => {
   //   console.log(data);
   // };
@@ -54,7 +54,7 @@ const Register = () => {
       })
       .catch((err) => {
         //err.reponse.data holds the object result of API
-        console.log(`Error is: ${JSON.stringify(err.response.data)}`);
+        // console.log(`Error is: ${JSON.stringify(err.response.data)}`);
       });
   };
 
@@ -62,22 +62,24 @@ const Register = () => {
     <MainLayout>
       <Container>
         <Row className="reg__row">
-          <Col lg={4} className="reg__left__column  d-none d-lg-block">
+          <Col lg={6} className="reg__left__column  d-none d-lg-block">
             <img
               src="/images/register_profile_pic.png"
               className="profile__pic center__block"
             />
             <h2 className="reg__h2">Let’s get you set up</h2>
             <p className="reg__p">
-              It should only take less than a minute to set up your account
+              It should only take less than a minute <br /> to set up your
+              account
             </p>
 
             <hr className="reg__hr" />
           </Col>
-          <Col lg={8} className="reg__right__column">
+
+          <Col lg={6} className="reg__right__column">
             <div className="reg__right__column__header__container">
-              <h2 className="reg__right__column__h2">Register</h2>
-              <p className="reg__right__column__p">
+              <h2 className="reg__right__column__h2 center__block">Register</h2>
+              <p className="reg__right__column__p center__block">
                 Use the form below to create your account
               </p>
             </div>
@@ -97,26 +99,12 @@ const Register = () => {
                       value={firstName}
                       onChange={handleChange}
                       className="reg__field"
-                      ref={register({ required: true })}
-                    />
-                  </Form.Group>
-                  {errors.gender && (
-                    <span className="reg__error__message">
-                      This field is required
-                    </span>
-                  )}
-                  <Form.Group controlId="formBasicGender">
-                    <Form.Control
-                      type="text"
-                      placeholder="Gender"
-                      name="gender"
-                      value={gender}
-                      onChange={handleChange}
-                      className="reg__field"
-                      ref={register({ required: true })}
+                      ref={register({ required: true, maxLength: 20 })}
                     />
                   </Form.Group>
                 </Col>
+              </Row>
+              <Row>
                 <Col>
                   {errors.lastName && (
                     <span className="reg__error__message">
@@ -133,6 +121,43 @@ const Register = () => {
                       className="reg__field"
                       ref={register({ required: true })}
                     />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  {errors.gender && (
+                    <span className="reg__error__message">
+                      This field is required
+                    </span>
+                  )}
+                  {/* <Form.Group controlId="formBasicGender">
+                    <Form.Control
+                      type="text"
+                      placeholder="Gender"
+                      name="gender"
+                      value={gender}
+                      onChange={handleChange}
+                      className="reg__field"
+                      ref={register({ pattern: /^[A-Za-z]+$/i })}
+                    />
+                  </Form.Group> */}
+                  <Form.Group controlId="formBasicGender">
+                    <Form.Control
+                      as="select"
+                      defaultValue="Choose..."
+                      type="text"
+                      placeholder="Gender"
+                      name="gender"
+                      value={gender}
+                      onChange={handleChange}
+                      className="reg__field"
+                      id="dropdown-item-button"
+                    >
+                      <option hidden>Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </Form.Control>
                   </Form.Group>
                 </Col>
               </Row>
@@ -155,6 +180,8 @@ const Register = () => {
                     />
                   </Form.Group>
                 </Col>
+              </Row>
+              <Row>
                 <Col>
                   {errors.region && (
                     <span className="reg__error__message">
@@ -193,6 +220,8 @@ const Register = () => {
                     />
                   </Form.Group>
                 </Col>
+              </Row>
+              <Row>
                 <Col>
                   {errors.password && (
                     <span className="reg__error__message">
@@ -207,7 +236,7 @@ const Register = () => {
                       value={password}
                       onChange={handleChange}
                       className="reg__field"
-                      ref={register({ required: true })}
+                      ref={register({ required: true }, { min: 6, max: 99 })}
                     />
                   </Form.Group>
                 </Col>
@@ -217,7 +246,7 @@ const Register = () => {
                 variant="primary"
                 type="submit"
               >
-                Submit
+                Create
               </Button>
             </Form>
           </Col>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import MainLayout from "./MainLayout";
+import React, { useState, useEffect } from "react";
+import MainLayout from "../layout/MainLayout";
 import GoogleLogin from "react-google-login";
 import axios from "axios";
 import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
@@ -7,13 +7,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+import queryString from "query-string";
 
-const Login = () => {
+const Login = (props) => {
   //useState for Login Form
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
+
+  const [showActivate, setShowActivate] = useState(false);
+
+  useEffect(() => {
+    const value = queryString.parse(props.location.search);
+    const activate = value.activate;
+
+    if (activate === "1") {
+      setShowActivate(true);
+    }
+  }, []);
+
   //deconstruct loginInfo state for easy use
   const { email, password } = loginInfo;
 
@@ -40,14 +53,14 @@ const Login = () => {
     //storing the tokenId from google response.
     const user = { tokenId: res.tokenId };
     axios
-      .post("http://localhost:5000/api/auth/googleLogin", user)
+      .post("http://localhost:5000/api/auth/googlelogin", user)
       .then((res) => {
         //res.data holds the object result of API
-        console.log(`Google Login Response is: ${JSON.stringify(res.data)}`);
+        // console.log(`Google Login Response is: ${JSON.stringify(res.data)}`);
       })
       .catch((err) => {
         //err.reponse.data holds the object result of API
-        console.log(`Error is: ${JSON.stringify(err.response.data)}`);
+        // console.log(`Error is: ${JSON.stringify(err.response.data)}`);
       });
   };
 
@@ -87,6 +100,7 @@ const Login = () => {
           </Col>
 
           <Col className="right__column ">
+            {/* {showActivate ? "Your account is now Activated!" : ""} */}
             <h2 className="right__column__h2">SIGN IN</h2>
             <p className="right__column__p">TO ACCESS YOUR ACCOUNT</p>
 

@@ -1,10 +1,8 @@
-* {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
+.reg__row {
+  margin-top: 0;
 }
 
-.reg__row {
+.reg__left__column {
   margin-top: 50px;
 }
 
@@ -25,6 +23,7 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  margin-top: 30px;
 }
 
 .reg__p {
@@ -38,7 +37,7 @@
 .reg__hr {
   border: 5px solid #fef400;
   max-width: 50px;
-  margin-top: 28px;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -63,10 +62,9 @@
 }
 
 .reg__field {
-  color: #fd6767;
   border-radius: 40px;
-  height: 52px;
-  width: 300px;
+  height: 45px;
+  width: 360px;
   display: table;
   margin-left: auto;
   margin-right: auto;
@@ -78,7 +76,7 @@
   background-color: #fef400;
   border-radius: 40px;
   height: 44px;
-  width: 120px;
+  width: 360px;
   font-size: 18px;
   font-weight: 600;
   border: none;
@@ -94,6 +92,14 @@
 .reg__error__message {
   padding-left: 30px;
   color: #fef400;
+}
+
+.dropdown-menu-arrow {
+  top: -25px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  position: relative;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
@@ -128,7 +134,7 @@
     border-radius: 0;
   }
   .reg__error__message {
-    margin-left: 20px;
+    margin-left: 120px;
   }
 }
 
