@@ -10,6 +10,11 @@ import Login from "./components/authentication/Login";
 import Activate from "./components/authentication/Activate";
 import ForgotPassword from "./components/authentication/ForgotPassword";
 import ChangePassword from "./components/authentication/ChangePassword";
+import AddProduct from "./components/product/AddProduct";
+import UpdateProduct from "./components/product/UpdateProduct";
+import Product from "./components/product/Product";
+import UserProduct from "./components/product/UserProduct";
+import Category from "./components/product/Category";
 
 function App() {
   return (
@@ -23,6 +28,11 @@ function App() {
         <Route exact path="/change-password" component={ChangePassword} />
         <Route exact path="/newItems" component={NewItems} />
         <Route exact path="/sellers" component={Sellers} />
+        <Route exact path="/addproduct" component={AddProduct} />
+        <Route exact path="/product" component={Product} />
+        <Route exact path="/updateProduct" component={UpdateProduct} />
+        <Route exact path="/UserProduct" component={UserProduct} />
+        <Route exact path="/category" component={Category} />
       </Switch>
     </Router>
   );
