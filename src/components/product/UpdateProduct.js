@@ -12,7 +12,9 @@ const UpdateProduct = (props) => {
     brand: "",
     condition: "",
   });
-  const productId= "5fd4d90d5f0c5f2d442f2f35"
+  const productId = "5fe222e4700f40581472eec8";
+  const [file, setFile] = useState([]);
+  const [filename, setFilename] = useState("Choose File");
 
   const {
     title,
@@ -28,9 +30,20 @@ const UpdateProduct = (props) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
+  const onChange = (e) => {
+    const samFile = file;
+    samFile.push(e.target.files[0]);
+    setFile(samFile);
+
+    setFilename(e.target.files[0].name);
+    console.log(file);
+    console.log(filename);
+  };
+
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmQ0ZDhmNDVmMGM1ZjJkNDQyZjJmMzQiLCJpYXQiOjE2MDgxMzEzMzMsImV4cCI6MTYwODczNjEzM30._QxEmHnypxA91oauvprcVF3P55x5_5ccztW4Wt0HIK4";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmQ0ZDhmNDVmMGM1ZjJkNDQyZjJmMzQiLCJpYXQiOjE2MDg2NDQxNzMsImV4cCI6MTYwOTI0ODk3M30.6o4j8aKBpN7-x1IqhYqX8pAUL3Eqwu7ztw63wN6hObM";
   const config = {
+    "Content-Type": "multipart/form-data",
     headers: { Authorization: `Bearer ${token}` },
   };
 
@@ -49,27 +62,25 @@ const UpdateProduct = (props) => {
       .catch(console.log);
   }, []);
 
-  const updateproduct = (e) => {
+  const updateproduct = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(product)) {
+      formData.append(key, value);
+    }
+    file.forEach((f, i) => {
+      formData.append("file" + i, f);
+    });
 
-    e.preventDefault();
-    console.log("title", title);
-    console.log("description", description);
-    console.log("price", price);
-    console.log("category", category);
-    console.log("meetingPlace", meetingPlace);
-    console.log("brand", brand);
-    console.log("condition", condition);
-
-    {
-      axios
-        .put(
-          URL + URL_PRODUCT + FORWARD_SLASH + productId,
-          product,
-          config
-        )
-        .then(console.log)
-        .catch(console.log);
+    try {
+      const result = await axios.put(
+        URL + URL_PRODUCT + FORWARD_SLASH + productId,
+        formData,
+        config
+      );
+      console.log(result);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -120,6 +131,20 @@ const UpdateProduct = (props) => {
           <option value="brand new">Brand new</option>
           <option value="used">Used</option>
         </select>
+        <div className="custom-file mb-4">
+          <input
+            type="file"
+            className="custom-file-input"
+            id="customFile"
+            onChange={onChange}
+            multiple
+            data-show-upload="true"
+          />
+          <label className="custom-file-label" htmlFor="customFile">
+            {filename}
+          </label>
+        </div>
+
         <button type="submit">Update</button>
       </form>
     </>
