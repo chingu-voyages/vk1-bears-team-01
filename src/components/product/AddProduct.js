@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { URL, URL_PRODUCT } from "./../constants";
+import "bootstrap/dist/css/bootstrap.css";
+import { Container, Row, Col } from "react-bootstrap";
+import "./../css/style.css";
 
 const AddProduct = (props) => {
+  const [image, setImage] = useState({ preview: "", raw: "" });
   const [product, setProduct] = useState({
     title: "",
     description: "",
@@ -15,13 +19,17 @@ const AddProduct = (props) => {
   const [file, setFile] = useState([]);
   const [filename, setFilename] = useState("Choose File");
   const onChange = (e) => {
-    const samFile = file;
-    samFile.push(e.target.files[0]);
-    setFile(samFile);
+    if (e.target.files[0]) {
+      const samFile = file;
+      samFile.push(e.target.files[0]);
+      setFile(samFile);
+      setFilename(e.target.files[0].name);
 
-    setFilename(e.target.files[0].name);
-    console.log(file);
-    console.log(filename);
+      setImage({
+        preview: window.URL.createObjectURL(e.target.files[0]),
+        raw: e.target.files[0],
+      });
+    }
   };
   const {
     title,
@@ -37,8 +45,14 @@ const AddProduct = (props) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmQ0ZDhmNDVmMGM1ZjJkNDQyZjJmMzQiLCJpYXQiOjE2MDg2NDQxNzMsImV4cCI6MTYwOTI0ODk3M30.6o4j8aKBpN7-x1IqhYqX8pAUL3Eqwu7ztw63wN6hObM";
+  {/*
+    useeffect() //get localhost token
+    token below is already use as setToken
+
+  */}
+
+  const [token,setToken] = useState("");
+    
   const config = {
     "Content-Type": "multipart/form-data",
     headers: { Authorization: `Bearer ${token}` },
@@ -48,15 +62,14 @@ const AddProduct = (props) => {
     e.preventDefault();
     const formData = new FormData();
     for (const [key, value] of Object.entries(product)) {
-      formData.append(key,value)
+      formData.append(key, value);
     }
     file.forEach((f, i) => {
-      formData.append("file"+i, f);
+      formData.append("file" + i, f);
     });
 
     try {
       const result = await axios.post(URL + URL_PRODUCT, formData, config);
-      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -65,64 +78,155 @@ const AddProduct = (props) => {
   return (
     <>
       <form id="addproduct" onSubmit={addproduct}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          value={title}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="description"
-          value={description}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          placeholder="price"
-          name="price"
-          value={price}
-          onChange={handleChange}
-        />
-        <select value={category} name="category" onChange={handleChange}>
-          <option value="phone">phone</option>
-          <option value="food">food</option>
-          <option value="service">service</option>
-        </select>
-        <input
-          type="text"
-          placeholder="meetingPlace"
-          name="meetingPlace"
-          value={meetingPlace}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="brand"
-          placeholder="brand"
-          value={brand}
-          onChange={handleChange}
-        />
-        <select value={condition} name="condition" onChange={handleChange}>
-          <option value="brand new">Brand new</option>
-          <option value="used">Used</option>
-        </select>
-        <button type="submit">add</button>
-        <div className="custom-file mb-4">
-          <input
-            type="file"
-            className="custom-file-input"
-            id="customFile"
-            onChange={onChange}
-            multiple
-            data-show-upload="true"
-          />
-          <label className="custom-file-label" htmlFor="customFile">
-            {filename}
-          </label>
-        </div>
+        <Container className="mt-5 mb-5" style={{ marginRight: "100px" }}>
+          <Row>
+            <Col md={5} className="text-center">
+              <div className="curv-border p-5 h-100">
+                <div className="customFile mb-4">
+                  <label htmlFor="customFile">
+                    <>
+                      <span className="text-center button-style-2">
+                        Select Photo
+                      </span>
+                    </>
+                  </label>
+                  <input
+                    type="file"
+                    className="custom-file-input w-100"
+                    id="customFile"
+                    onChange={onChange}
+                    multiple
+                    data-show-upload="true"
+                    style={{ display: "none" }}
+                  />
+                </div>
+                <div>
+                  <Row>
+                    {file.length === 0 ? (
+                      <>
+                        <Col md={4} className="mt-4">
+                          <div className="photoAvatar">Photo</div>
+                        </Col>
+                        <Col md={4} className="mt-4">
+                          <div className="photoAvatar">Photo</div>
+                        </Col>
+                        <Col md={4} className="mt-4">
+                          <div className="photoAvatar">Photo</div>
+                        </Col>
+                      </>
+                    ) : file.length === 2 ? (
+                      <>
+                        <Col md={4} className="mt-4">
+                          <img
+                            src={window.URL.createObjectURL(file[0])}
+                            alt="dummy"
+                            width="100%"
+                            height="100"
+                          />
+                        </Col>
+                        <Col md={4} className="mt-4">
+                          <img
+                            src={window.URL.createObjectURL(file[1])}
+                            alt="dummy"
+                            width="100%"
+                            height="100"
+                          />
+                        </Col>
+                        <Col md={4} className="mt-4">
+                          <div className="photoAvatar">Photo</div>
+                        </Col>
+                      </>
+                    ) : (
+                      file
+                        .slice(0)
+                        .reverse()
+                        .map((el, i) => {
+                          if (file.length === 1) {
+                            return (
+                              <>
+                                <Col md={4} className="mt-4">
+                                  <img
+                                    src={window.URL.createObjectURL(el)}
+                                    alt="dummy"
+                                    width="100%"
+                                    height="100"
+                                  />
+                                </Col>
+                                <Col md={4} className="mt-4">
+                                  <div className="photoAvatar">Photo</div>
+                                </Col>
+                                <Col md={4} className="mt-4">
+                                  <div className="photoAvatar">Photo</div>
+                                </Col>
+                              </>
+                            );
+                          } else {
+                            return i < 3 ? (
+                              <Col md={4} className="mt-4">
+                                <img
+                                  src={window.URL.createObjectURL(el)}
+                                  alt="dummy"
+                                  width="100%"
+                                  height="100"
+                                />
+                              </Col>
+                            ) : null;
+                          }
+                        })
+                    )}
+                  </Row>
+                </div>
+              </div>
+            </Col>
+            <Col md={7} className="text-center">
+              <div className="curv-border  p-5">
+                <select
+                  className="form-control"
+                  value={category}
+                  name="category"
+                  onChange={handleChange}
+                >
+                  <option selected>Category</option>
+                  <option value="phone">phone</option>
+                  <option value="food">food</option>
+                  <option value="service">service</option>
+                </select>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Title"
+                  value={title}
+                  onChange={handleChange}
+                  className="form-control mt-2"
+                />
+                <input
+                  type="number"
+                  placeholder="price"
+                  name="price"
+                  value={price}
+                  onChange={handleChange}
+                  className="form-control mt-2"
+                />
+                <textarea
+                  name="description"
+                  placeholder="description"
+                  value={description}
+                  onChange={handleChange}
+                  className="form-control mt-2 mb-5"
+                  rows="5"
+                />
+              </div>
+            </Col>
+            <Col>
+              <div className="mt-3">
+                {" "}
+                <button type="submit" className="float-right button-style-1">
+                  Sell
+                </button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </form>
     </>
   );

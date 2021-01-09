@@ -1,0 +1,140 @@
+.curv-border {
+  border-radius: 40px;
+  box-shadow: 0px 3px 11px 6px rgba(0, 0, 0, 0.1);
+}
+.button-style-1 {
+  background-color: #f7fb51;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 40px;
+  width: 137px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #fd6767;
+}
+
+.button-style-2 {
+  background-color: #f7fb51;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 40px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 36px;
+  text-align: center;
+  color: #fd6767;
+  padding: 0 50px;
+}
+
+.uplImgAvatar {
+  background: #ffffff;
+  box-shadow: 0px 3px 11px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  height: 100px;
+}
+.customFile {
+  width: 100%;
+  background: #c4c4c4;
+  box-shadow: 0px 3px 11px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  padding: 20%;
+  border: 1px #c4c4c4 solid;
+}
+.customFile:hover .button-style-2 {
+  background-color: #fd6767;
+  color: #f7fb51;
+}
+
+.customFile:hover {
+  border: 1px #f7fb51 solid;
+}
+
+textarea {
+  resize: none;
+}
+
+.photoAvatar {
+  background-color: #fd6767;
+  color: #ffffff;
+  padding: 40 px 0;
+  text-align: center;
+}
+
+.product-pic-home {
+  border-radius: 40px;
+  height: 150px;
+  width: 85%;
+}
+
+.img-explore {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-title {
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.product-price {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 10px;
+}
+
+.prod-title {
+  color: #fd6767;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 72px;
+}
+
+.product-desc {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  word-break: break-all;
+}
+
+.prod-meeting {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.btn-send {
+  background: #f7fb51;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 40px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  color: #fd6767;
+}
+.product-pic-prim {
+  border-radius: 40px;
+  height: 150px;
+  width: 50%;
+}
+
+a { color: inherit; } 
+
+
+

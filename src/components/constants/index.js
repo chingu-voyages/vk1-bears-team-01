@@ -5,6 +5,7 @@ const USER_PRODUCT = "userProduct";
 const USER_ID = "userId";
 const PRODUCT_ID = "productId";
 const CATEGORY = "category";
+const DIR_DB_IMAGE= "/app/uploads/images";
 
 export {
   URL,
@@ -14,4 +15,5 @@ export {
   USER_ID,
   PRODUCT_ID,
   CATEGORY,
+  DIR_DB_IMAGE
 };

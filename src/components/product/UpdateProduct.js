@@ -36,8 +36,6 @@ const UpdateProduct = (props) => {
     setFile(samFile);
 
     setFilename(e.target.files[0].name);
-    console.log(file);
-    console.log(filename);
   };
 
   const token =
@@ -53,8 +51,7 @@ const UpdateProduct = (props) => {
       .then((response) => {
         const status = response.status;
         const data = response.data;
-        if (status == 200) {
-          console.log(data);
+        if (status === 200) {
           setProduct(data);
         } else {
         }
@@ -78,7 +75,6 @@ const UpdateProduct = (props) => {
         formData,
         config
       );
-      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -145,7 +141,7 @@ const UpdateProduct = (props) => {
           </label>
         </div>
 
-        <button type="submit">Update</button>
+        <button type="submit" className="mt-5">Update</button>
       </form>
     </>
   );

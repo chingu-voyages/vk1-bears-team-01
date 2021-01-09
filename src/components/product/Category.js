@@ -12,9 +12,8 @@ const Category = (props) => {
       )
       .then((response) => {
         const status = response.status;
-        if (status == 200) {
+        if (status === 200) {
           product = response.data;
-          console.log(product);
         } else {
           console.log("no data");
         }

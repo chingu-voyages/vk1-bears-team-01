@@ -12,6 +12,7 @@ import ForgotPassword from "./components/authentication/ForgotPassword";
 import ChangePassword from "./components/authentication/ChangePassword";
 import AddProduct from "./components/product/AddProduct";
 import UpdateProduct from "./components/product/UpdateProduct";
+import AllProduct from "./components/product/AllProduct";
 import Product from "./components/product/Product";
 import UserProduct from "./components/product/UserProduct";
 import Category from "./components/product/Category";
@@ -29,10 +30,11 @@ function App() {
         <Route exact path="/newItems" component={NewItems} />
         <Route exact path="/sellers" component={Sellers} />
         <Route exact path="/addproduct" component={AddProduct} />
-        <Route exact path="/product" component={Product} />
+        <Route exact path="/allproduct" component={AllProduct} />
         <Route exact path="/updateProduct" component={UpdateProduct} />
         <Route exact path="/UserProduct" component={UserProduct} />
         <Route exact path="/category" component={Category} />
+        <Route exact path="/product/:productId" component={Product} />
       </Switch>
     </Router>
   );

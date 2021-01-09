@@ -11,9 +11,8 @@ const UserProduct = (props) => {
     ).then(response=>{
         const status = response.status;
         const data = response.data;
-        if(status==200){
+        if(status===200){
             product = data;
-            console.log(product)
         }else{
             console.log("no data")
         }
